@@ -98,7 +98,7 @@ Este modelo representa un **sistema rotacional** compuesto por:
 
 ---
 
-## ⚙️ Ecuaciones del Sistema
+### Ecuaciones del Sistema
 
 Aplicamos la segunda ley de Newton para sistemas rotacionales:
 
@@ -126,7 +126,7 @@ Sustituyendo en la ecuación de movimiento:
 
 ---
 
-## 📉 Función de Transferencia
+### Función de Transferencia
 
 Aplicando la **transformada de Laplace** con condiciones iniciales cero:
 
