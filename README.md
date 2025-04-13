@@ -1,33 +1,6 @@
 
-# Modelamiento de sistemas mecanicos rotacionales
-
-El modelamiento de sistemas rotacionales consiste en representar matemáticamente el comportamiento dinámico de elementos que giran alrededor de un eje. Estos sistemas se encuentran en motores, engranajes, turbinas y muchos mecanismos mecánicos.
-
-Para modelarlos se aplica la segunda ley de Newton en forma rotacional, también conocida como la ley del momento:
-
-$\sum \tau = J \alpha$
-
-donde 
-𝜏
-τ es el torque neto, 
-𝐽
-J es el momento de inercia y 
-𝛼
-α es la aceleración angular.
-
-En estos sistemas se analizan elementos como discos, poleas, ejes y componentes que introducen resistencia al giro como fricción rotacional y resortes torsionales. Al igual que en sistemas traslacionales, pueden representarse mediante ecuaciones diferenciales, y su comportamiento puede estudiarse usando herramientas como la transformada de Laplace para obtener funciones de transferencia.
-
 
 ## 1. Introduccion
-
-Introduccion a modelamiento de sistemas mecanico rotacionales
-
-## 2. Aplicaciones típicas
-Sistemas de suspensión automotriz (con masas representando ruedas y carrocería).
-
-Estructuras de edificios ante sismos (pisos representados como masas).
-
-Sistemas robóticos de múltiples grados de libertad.
 
 
 
@@ -48,6 +21,7 @@ Donde:
 - \( J \): momento de inercia (kg·m²)  
 - \( \alpha \): aceleración angular (rad/s²)  
 
+
 También se utilizan otros elementos como:
 
 - **Resorte torsional**:  
@@ -61,8 +35,18 @@ También se utilizan otros elementos como:
   ```
 
 ---
+## Intriduccion
 
-## 🗝️ Definiciones Clave
+
+El modelamiento de sistemas rotacionales consiste en representar matemáticamente el comportamiento dinámico de elementos que giran alrededor de un eje. Estos sistemas se encuentran en motores, engranajes, turbinas y muchos mecanismos mecánicos.
+
+![Logo](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRtNrHyDJxaA0RKyaJnNmrNu425mD9-8XlrXkkKXmLALvVcdw7F07l2Mfq7lmMAP2ki_PYZcHu0yw-K2dK37nWK4b0GUyHnGUYUdWnHz1Qsr2mV-Qam8RFcDR_IgKGY4OmRj_RKs8NPA/s200/trans.png)
+
+
+Figura 1. modelamiento de sistemas rotacionales
+
+
+## 🔑  Definiciones Clave
 
 | Término                    | Definición                                                                 |
 |---------------------------|----------------------------------------------------------------------------|
@@ -96,64 +80,99 @@ También se utilizan otros elementos como:
 
 6. **Instrumentación rotacional (giroscopios)**  
    - Estabilización en drones, naves y satélites.
-##4. Sistemas mecanicos acoplados y verticales
-
-Los elementos básicos de todo sistema mecánico son la masa, el resorte y el amortiguador. El estudio del movimiento en sistemas mecánicos se corresponde con el análisis de sistemas dinámicos.
-
-### 4.1 sistemas verticales 
-
-En los sistemas verticales, la dirección del movimiento es afectada por la gravedad, lo cual modifica el equilibrio estático del sistema. En este caso, las ecuaciones diferenciales incluyen el peso de las masas (
-𝑚
-𝑔
-mg) como parte de las fuerzas externas. Sin embargo, si se considera el análisis respecto a la posición de equilibrio, el término gravitacional se puede eliminar, simplificando el análisis dinámico.
-
-![Logo](https://masam.cuautitlan.unam.mx/dycme/dsf/wp-content/uploads/sites/11/2021/07/masaresamor.svg)
-
-
-Figura 1. sistemas verticales 
-
-### 4.2 sistemas acoplados
-El modelamiento de sistemas acoplados consiste en representar y analizar sistemas mecánicos en los que dos o más elementos (como masas) están conectados de forma que el movimiento de uno influye en el otro. Estas conexiones se dan a través de resortes, amortiguadores u otros elementos, y el objetivo es describir el sistema mediante ecuaciones diferenciales que predicen su comportamiento dinámico.
-
-
-
-Figura 2.  sistemas acoplados
-
 
  ## 6. Ejercicios 
  
  📚 Hallar la funcion de transferencia 
 
-![Logo]()
-
-Figura 3. sistema masa resorte amortiguador amortiguador
+![Logo](https://www.researchgate.net/profile/I-Canton/publication/337893922/figure/fig4/AS:834920016523269@1576071852626/Figura-33-Sistema-rotacional-masa-resorte-amortiguador.jpg)
 
 
-### Ley de newton
+Este modelo representa un **sistema rotacional** compuesto por:
 
-### Ecuación para la masa m1
+- Un **resorte torsional** con constante de rigidez \( k \)
+- Un **amortiguador rotacional** con coeficiente de fricción \( b \)
+- Un **momento de inercia** \( J \)
+- Una **entrada de torque** \( \tau(t) \)
+- Una **salida angular** \( \theta(t) \)
 
-$m_1 \ddot{x}_1 + (b_1 + b_2) \dot{x}_1 + (k_1 + k_2) x_1 - b_2 \dot{x}_2 - k_2 x_2 = u(t)$
+---
 
-### Ecuación para la masa m2
+## ⚙️ Ecuaciones del Sistema
 
-$m_2 \ddot{x}_2 + b_2 \dot{x}_2 + k_2 x_2 - b_2 \dot{x}_1 - k_2 x_1 = 0$
+Aplicamos la segunda ley de Newton para sistemas rotacionales:
+
+```math
+\sum \tau = J \ddot{\theta}(t)
+```
+
+Las fuerzas internas del sistema son:
+
+- Torque del resorte:  
+  ```math
+  \tau_k = -k \theta(t)
+  ```
+
+- Torque del amortiguador:  
+  ```math
+  \tau_b = -b \dot{\theta}(t)
+  ```
+
+Sustituyendo en la ecuación de movimiento:
+
+```math
+\tau(t) - b \dot{\theta}(t) - k \theta(t) = J \ddot{\theta}(t)
+```
+
+---
+
+## 📉 Función de Transferencia
+
+Aplicando la **transformada de Laplace** con condiciones iniciales cero:
+
+```math
+\tau(s) - b s \Theta(s) - k \Theta(s) = J s^2 \Theta(s)
+```
+
+Factorizando:
+
+```math
+\tau(s) = \Theta(s) (J s^2 + b s + k)
+```
+
+Finalmente, la **función de transferencia** del sistema es:
+
+```math
+\frac{\Theta(s)}{\tau(s)} = \frac{1}{J s^2 + b s + k}
+```
+
+---
+
 
  📚 Hallar la funcion de transferencia 
 
-![Logo](https://virtual.cuautitlan.unam.mx/intar/ime/wp-content/uploads/sites/15/2021/06/Sist2Orden.jpg)
+![Logo](https://ocw.ehu.eus/file.php/83/cap31_html/cap315x.png)
 
-### Ley de newton
+ Relación entre número de dientes y radios
 
-% Ecuación diferencial del sistema
-$M \ddot{x}(t) + B \dot{x}(t) + K x(t) = f(t)$
+$r_1 N_2 = r_2 N_1$
+
+ Relación entre desplazamientos angulares y radios
+
+$\theta_1 r_1 = \theta_2 r_2$
+
+Relación entre torques cuando no hay pérdidas
+
+$T_1 \theta_1 = T_2 \theta_2$
+
 
 
  ## 6. Conclusion
 
-El modelamiento de sistemas acoplados y verticales permite analizar cómo interactúan múltiples componentes mecánicos, considerando fuerzas como resortes, amortiguadores y gravedad. A través de ecuaciones diferenciales y técnicas como la transformada de Laplace, se puede predecir y controlar el comportamiento dinámico del sistema. Esta herramienta es clave en el diseño de estructuras, máquinas y sistemas de control.
+El modelamiento de sistemas rotacionales permite representar dinámicamente componentes mecánicos como discos, engranajes y motores, facilitando su análisis y control. A través de ecuaciones diferenciales y funciones de transferencia, se puede predecir su comportamiento ante diferentes entradas. Estos modelos son fundamentales en la ingeniería para diseñar sistemas eficientes, precisos y seguros en aplicaciones como robótica, automatización y sistemas mecatrónicos.
 
  ## 7. Referencias
 
 
  
+
